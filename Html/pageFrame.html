@@ -15,16 +15,18 @@
     <div id="native-msg">我是本地html</div>
     <button id="send-to-native">给native发送消息</button>
     <script>
+    const nativeMsg = document.getElementById('native-msg');
     window.receiveNativeMessage = function(msg) {
-        const nativeMsg = document.getElementById('native-msg');
-        
         nativeMsg.innerHTML = msg;
     }
         
     const sendMsgEl = document.getElementById('send-to-native');
     
     sendMsgEl.onclick = function() {
-        window.webkit.messageHandlers.JSBridge.postMessage("我是来自webview的消息");
+        nativeMsg.innerHTML = window.webkit + ''
+        if (window.webkit) {
+            window.webkit.messageHandlers.JSBridge.postMessage("我是来自webview的消息");
+        }
     }
     </script>
 </body>
