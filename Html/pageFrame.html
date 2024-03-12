@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    #send-to-native {
+        font-size: 20px;
+        padding: 10px;
+    }
+    </style>
+</head>
+<body>
+    <div id="native-msg">我是本地html</div>
+    <button id="send-to-native">给native发送消息</button>
+    <script>
+    window.receiveNativeMessage = function(msg) {
+        const nativeMsg = document.getElementById('native-msg');
+        
+        nativeMsg.innerHTML = msg;
+    }
+        
+    const sendMsgEl = document.getElementById('send-to-native');
+    
+    sendMsgEl.onclick = function() {
+        window.webkit.messageHandlers.JSBridge.postMessage("我是来自webview的消息");
+    }
+    </script>
+</body>
+</html>
