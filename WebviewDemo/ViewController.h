@@ -1,5 +1,6 @@
 #import <UIKit/UIKit.h>
 #import "WebKit/WebKit.h"
+#import <JavaScriptCore/JavaScriptCore.h>
 
 // 实现WKScriptMessageHandler方法
 @interface ViewController : UIViewController<WKScriptMessageHandler>

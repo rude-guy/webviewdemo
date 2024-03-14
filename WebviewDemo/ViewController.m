@@ -11,6 +11,7 @@
     printf("hello world\n");
     [self createButton];
     [self initWebView];
+    [self initJSCore];
 }
 
 - (void)createButton {
@@ -73,5 +74,12 @@
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [self._webview loadRequest:request];
 }
+
+-(void)initJSCore{
+    JSContext *ctx = [[JSContext alloc] init];
+    [ctx evaluateScript:@"const str = 'hello word'; console.log(str)"];
+    printf("test");
+}
+
 
 @end
